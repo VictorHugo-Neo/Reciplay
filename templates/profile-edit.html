@@ -1,10 +1,10 @@
 {% extends 'index.html' %}
 
-{% block title %}@{{request.user.username}} Profile Edit - BrainBunny{% endblock title %}
+{% block title %}@{{request.user.username}} Editar Perfil - RecyPlay{% endblock title %}
 
 {% block content %}
 
-  <h1 class="display-4 text-center my-5">Edit Profile</h1>
+  <h1 class="display-4 text-center my-5">Editar Perfil</h1>
 
 
   <div class="container">
@@ -26,16 +26,16 @@
                 {% endfor %}
               </div>
           <div class="mb-3">
-            <label for="exampleInputImage" class="form-label visually-hidden">Profile Image</label>
+            <label for="exampleInputImage" class="form-label visually-hidden">Imagem do perfil</label>
             <input type="file" name="profile_img" class="form-control" id="exampleInputImage">
           </div>
           <div class="mb-3">
-            <label for="exampleInputFirstName" class="form-label visually-hidden">First Name</label>
-            <input type="text" name="firstname" value="{{user_profile.user.first_name}}" class="form-control" id="exampleInputFirstName" placeholder="First Name" required>
+            <label for="exampleInputFirstName" class="form-label visually-hidden">Nome</label>
+            <input type="text" name="firstname" value="{{user_profile.user.first_name}}" class="form-control" id="exampleInputFirstName" placeholder="Nome" required>
           </div>
           <div class="mb-3">
-            <label for="exampleInputLastName" class="form-label visually-hidden">Last Name</label>
-            <input type="text" name="lastname" value="{{user_profile.user.last_name}}" class="form-control" id="exampleInputLastName" placeholder="Last Name" required>
+            <label for="exampleInputLastName" class="form-label visually-hidden">Sobrenome</label>
+            <input type="text" name="lastname" value="{{user_profile.user.last_name}}" class="form-control" id="exampleInputLastName" placeholder="Sobrenome" required>
           </div>
           <div class="mb-3">
             <label for="exampleInputEmail2" class="form-label visually-hidden">Email</label>
@@ -43,31 +43,31 @@
               placeholder="Email" required>
           </div>
           <div class="mb-3">
-            <label for="exampleInputUsername1" class="form-label visually-hidden">Username</label>
+            <label for="exampleInputUsername1" class="form-label visually-hidden">Nome de usuário</label>
             <input type="text" name="username" value="{{user_profile.user.username}}" class="form-control" id="exampleInputUsername1" aria-describedby="emailHelp"
-              placeholder="Username" required>
+              placeholder="Nome de usuário" required>
           </div>
           <div class="mb-3">
-            <label for="exampleInputLocation" class="form-label visually-hidden">Location</label>
-            <input type="text" name="location" value="{{user_profile.location}}" class="form-control" id="exampleInputLocation" placeholder="Location" required>
+            <label for="exampleInputLocation" class="form-label visually-hidden">Localização</label>
+            <input type="text" name="location" value="{{user_profile.location}}" class="form-control" id="exampleInputLocation" placeholder="Localização" required>
           </div>
           
           <div class="mb-3">
-            <label for="exampleInputGender" class="form-label visually-hidden">Gender</label>
+            <label for="exampleInputGender" class="form-label visually-hidden">Gênero</label>
             <select class="form-select form-control" name="gender" id="exampleInputGender" aria-label="Default select example" required>
-                <option selected>Choose Your Gender</option>
-                <option {% if user_profile.gender == 'Male' %}selected{% endif %} value="Male">Male</option>
-                <option {% if user_profile.gender == 'Female' %}selected{% endif %} value="Female">Female</option>
-                <option {% if user_profile.gender == 'Other' %}selected{% endif %} value="Other">Other</option>
+                <option selected>Selecione seu gênero</option>
+                <option {% if user_profile.gender == 'Male' %}selected{% endif %} value="Male">Masculino</option>
+                <option {% if user_profile.gender == 'Female' %}selected{% endif %} value="Female">Feminino</option>
+                <option {% if user_profile.gender == 'Other' %}selected{% endif %} value="Other">Outro</option>
               </select>
           </div>
 
           <div class="mb-3">
-            <label for="exampleFormControlTextarea1" class="form-label visually-hidden">Your Bio</label>
-            <textarea class="form-control" name="bio" id="exampleFormControlTextarea1" rows="3" placeholder="Your Bio" required>{{user_profile.bio}}</textarea>
+            <label for="exampleFormControlTextarea1" class="form-label visually-hidden">Sua biografia</label>
+            <textarea class="form-control" name="bio" id="exampleFormControlTextarea1" rows="3" placeholder="Sua biografia" required>{{user_profile.bio}}</textarea>
           </div>
           
-          <button type="submit" class="btn btn-success">Save Profile</button>
+          <button type="submit" class="btn btn-success">Salvar perfil</button>
         </form>
       </div>
       <div class="col-12">

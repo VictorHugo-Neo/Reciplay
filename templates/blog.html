@@ -1,5 +1,5 @@
 {% extends 'index.html' %}
-{% block title %}{{blog.title}} - BrainBunny{% endblock title %}
+{% block title %}{{blog.title}} - RecyPlay{% endblock title %}
 
 {% block content %}
 
@@ -9,11 +9,11 @@
     <div class="container col-md-8 col-sm-12">
         <div class="d-flex justify-content-between">
             <div>
-                <sub>Author</sub><br>
+                <sub>Autor</sub><br>
                 <a href="{% url 'profile' blog.author.username %}">@{{blog.author.username}}</a>
             </div>
             <div>
-                <sub>Published</sub><br>
+                <sub>Publicados</sub><br>
                 <span>{{blog.created_at|timesince}} ago</span>
             </div>
         </div>

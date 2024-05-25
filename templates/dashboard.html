@@ -1,9 +1,9 @@
 {% extends 'index.html' %}
-{% block title %}Dashboard - BrainBunny{% endblock title %}
+{% block title %}Painel - RecyPlay{% endblock title %}
 
 {% block content %}
 
-    <h1 class="display-4 text-center my-5">Dashboard</h1>
+    <h1 class="display-4 text-center my-5">Painel</h1>
 
     <!-- Dashboard Code Goes Here -->
     <div class="container">
@@ -12,14 +12,14 @@
                 <div class="card">
                     <div class="card-body text-center mt-4">
                         <h1 class="card-title pricing-card-title">{{total_users}}</h1>
-                        <p class="card-text">Active Users</p>
+                        <p class="card-text">Usuários ativos</p>
                         <ul class="list-group mt-5">
                             <li class="list-group-item d-flex justify-content-between align-items-center">
-                                Today
+                                Hoje
                                 <span class="badge bg-primary rounded-pill">{{today_users}}</span>
                             </li>
                             <li class="list-group-item d-flex justify-content-between align-items-center">
-                                Gain %
+                                Ganho %
                                 <span class="badge bg-primary rounded-pill">{{gain_users|default:0}}%</span>
                             </li>
                         </ul>
@@ -33,11 +33,11 @@
                         <p class="card-text">Quizzes</p>
                         <ul class="list-group mt-5">
                             <li class="list-group-item d-flex justify-content-between align-items-center">
-                                Today
+                                Hoje
                                 <span class="badge bg-primary rounded-pill">{{today_quizzes}}</span>
                             </li>
                             <li class="list-group-item d-flex justify-content-between align-items-center">
-                                Gain %
+                                Ganho %
                                 <span class="badge bg-primary rounded-pill">{{gain_quizzes|default:0}}%</span>
                             </li>
                         </ul>
@@ -48,14 +48,14 @@
                 <div class="card">
                     <div class="card-body text-center mt-4">
                         <h1 class="card-title pricing-card-title">{{total_quiz_submit}}</h1>
-                        <p class="card-text">Submissions</p>
+                        <p class="card-text">Submissões</p>
                         <ul class="list-group mt-5">
                             <li class="list-group-item d-flex justify-content-between align-items-center">
-                                Today
+                                Hoje
                                 <span class="badge bg-primary rounded-pill">{{today_quiz_submit}}</span>
                             </li>
                             <li class="list-group-item d-flex justify-content-between align-items-center">
-                                Gain %
+                                Ganho %
                                 <span class="badge bg-primary rounded-pill">{{gain_quiz_submit|default:0}}%</span>
                             </li>
                         </ul>
@@ -66,14 +66,14 @@
                 <div class="card">
                     <div class="card-body text-center mt-4">
                         <h1 class="card-title pricing-card-title">{{total_questions}}</h1>
-                        <p class="card-text">Questions</p>
+                        <p class="card-text">Questões</p>
                         <ul class="list-group mt-5">
                             <li class="list-group-item d-flex justify-content-between align-items-center">
-                                Today
+                                Hoje
                                 <span class="badge bg-primary rounded-pill">{{today_questions}}</span>
                             </li>
                             <li class="list-group-item d-flex justify-content-between align-items-center">
-                                Gain %
+                                Ganho %
                                 <span class="badge bg-primary rounded-pill">{{gain_questions|default:0}}%</span>
                             </li>
                         </ul>
@@ -84,7 +84,7 @@
 
         <div class="row">
             <div class="col-sm-12 col-md-12 mb-3">
-                <h2 class="mb-3 text-center">Inbox</h2>
+                <h2 class="mb-3 text-center">Caixa de entrada</h2>
                 <table class="table">
                     <thead>
                         <tr>

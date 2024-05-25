@@ -13,8 +13,8 @@
     <div class="container text-center">
         {% if request.user.username == user_profile2.user.username %}
         <div class="btn-group" role="group" aria-label="Basic mixed styles example">
-            <a href="{% url 'edit_profile' %}" type="button" class="btn btn-outline-primary">Edit</a>
-            <a href="{% url 'delete_profile' %}" type="button" class="btn btn-outline-danger">Delete</a>
+            <a href="{% url 'edit_profile' %}" type="button" class="btn btn-outline-primary">Editar</a>
+            <a href="{% url 'delete_profile' %}" type="button" class="btn btn-outline-danger">Deletar</a>
         </div>
         {% endif %}
 

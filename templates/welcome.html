@@ -4,27 +4,27 @@
 {% block content %}
 
 <div class="container text-center my-5">
-    <h1 class="display-5 fw-bold my-2">Welcome to BrainBunny</h1>
-    <p class="fs-3">Not just make your ranking in college but also in knowledge</p>
+    <h1 class="display-5 fw-bold my-2">Bem vindo ao RecyPlay</h1>
+    <p class="fs-3">Aprenda jogando</p>
     <div class="d-inline-flex gap-2 mb-5">
         <a href="{% url 'all_quiz' %}" class="d-inline-flex align-items-center btn btn-primary btn-lg px-4">
-            Take a quiz
+            Inciar um Quiz
         </a>
         {% if not request.user.is_authenticated %}
         <a href="{% url 'register' %}" class="btn btn-outline-secondary btn-lg px-4" type="button">
-            Sign Up
+            Login
         </a>
         {% endif %}
     </div>
 </div>
 
 <div class="container text-center">
-    <h1 class="display-4 text-center my-5">Leaderboard</h1>
+    <h1 class="display-4 text-center my-5">Entre os melhores</h1>
 
     <div class="row row-cols-sm-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4 mx-3">
         {% if leaderboard_users|length == 0 %}
         <div class="col-lg-4 position-relative mb-4">
-            <h4 class="text-center text-danger">No User Available on Leaderboard!!</h4>
+            <h4 class="text-center text-danger">Nenhum usuário disponível na tabela de classificação!!</h4>
         </div>
         {% else %}
         {% for rank in leaderboard_users %}
