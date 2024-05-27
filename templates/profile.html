@@ -25,10 +25,10 @@
                     <h2 class="fs-3">@{{user_profile2.user.username}}</h2>
                 </div>
                 <div class="col-12">
-                    <h2>{{user_profile2.user.first_name|default:"Full name not available"}} {{user_profile2.user.last_name}}</h2>
-                    <p class="fs-5"><i class="bi bi-gender-ambiguous"></i> {{user_profile2.gender|default:'Gender Not Available'}}</p>
-                    <p class="fs-5"><i class="bi bi-geo-alt-fill"></i> {{user_profile2.location|default:'Location Not Available'}}</p>
-                    <p class="fs-5"><i class="bi bi-file-person"></i> {{user_profile2.bio|default:'Bio Not Available'}}</p>
+                    <h2>{{user_profile2.user.first_name|default:"Nome completo não disponível"}} {{user_profile2.user.last_name}}</h2>
+                    <p class="fs-5"><i class="bi bi-gender-ambiguous"></i> {{user_profile2.gender|default:'Gênero não disponível'}}</p>
+                    <p class="fs-5"><i class="bi bi-geo-alt-fill"></i> {{user_profile2.location|default:'Localização não disponível'}}</p>
+                    <p class="fs-5"><i class="bi bi-file-person"></i> {{user_profile2.bio|default:'Biografia não disponível'}}</p>
                     {% if request.user.is_superuser %}
                     <p class="fs-5"><i class="bi bi-envelope-at"></i> <a href="mailto:{{user_profile2.user.email}}"> {{user_profile2.user.email|default:'Email Not Available'}}</a></p>
                     {% endif %}
@@ -47,8 +47,8 @@
                             <tr>
                                 <th scope="col">#</th>
                                 <th scope="col">Quiz</th>
-                                <th scope="col">Marks</th>
-                                <th scope="col">Time</th>
+                                <th scope="col">Acertos</th>
+                                <th scope="col">Tempo ativo</th>
                             </tr>
                         </thead>
                         <tbody>

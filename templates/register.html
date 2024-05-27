@@ -1,10 +1,10 @@
 {% extends 'index.html' %}
 
-{% block title %}Register Page - BrainBunny{% endblock title %}
+{% block title %}Página de registro - RecyPlay{% endblock title %}
 
 {% block content %}
 
-  <h1 class="display-4 text-center my-5">Register</h1>
+  <h1 class="display-4 text-center my-5">Cadastro</h1>
 
   <div class="container">
     <div class="row row-cols-sm-1 row-cols-lg-3 container">
@@ -25,24 +25,24 @@
               placeholder="Email" required>
           </div>
           <div class="mb-3">
-            <label for="exampleInputUsername1" class="form-label visually-hidden">Username</label>
+            <label for="exampleInputUsername1" class="form-label visually-hidden">Nome de Usuário</label>
             <input type="text" name="username" class="form-control" id="exampleInputUsername1" aria-describedby="emailHelp"
               placeholder="Username" required>
           </div>
           <div class="mb-3">
-            <label for="exampleInputPassword1" class="form-label visually-hidden">Password</label>
-            <input type="password" name="password" class="form-control" id="exampleInputPassword1" placeholder="Password" required>
+            <label for="exampleInputPassword1" class="form-label visually-hidden">Senha</label>
+            <input type="password" name="password" class="form-control" id="exampleInputPassword1" placeholder="Senha" required>
           </div>
           <div class="mb-3">
-            <label for="exampleInputPassword2" class="form-label visually-hidden">Repeat Password</label>
-            <input type="password" name="password2" class="form-control" id="exampleInputPassword2" placeholder="Repeat Password" required>
+            <label for="exampleInputPassword2" class="form-label visually-hidden">Repita a senha</label>
+            <input type="password" name="password2" class="form-control" id="exampleInputPassword2" placeholder="Repita a senha" required>
           </div>
           <div class="mb-3 form-check">
             <input type="checkbox" class="form-check-input" id="exampleCheck1" required>
-            <label class="form-check-label" for="exampleCheck1"><a href="{% url 'terms_conditions' %}">Terms and Conditions</a></label>
+            <label class="form-check-label" for="exampleCheck1"><a href="{% url 'terms_conditions' %}">Termo e condições</a></label>
           </div>
-          <button type="submit" class="btn btn-primary">Register</button>
-          <p class="my-4">Already a member? <b><a href="{% url 'login' %}">Login</a></b></p>
+          <button type="submit" class="btn btn-primary">Finalizar cadastro</button>
+          <p class="my-4">Já possui uma conta? <b><a href="{% url 'login' %}">Login</a></b></p>
         </form>
       </div>
       <div class="col-12">
