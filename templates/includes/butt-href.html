@@ -1,0 +1,64 @@
+<!--Para botões e link verde-->
+{% if button_type == "green" %}
+    {% if href %}
+        <a href="{{ href }}" class="btn fw-bold" style="background-color: #00BF13">{{ btn_text }}</a>
+    {% else %}
+        <button type="submit" class="btn" style="background-color: #00BF13">{{btn_text}}</button>
+    {% endif %}
+
+<!-- Para botões e link azul -->
+{% elif button_type == "blue" %}
+    {% if href %}
+        <a href="{{ href }}" class="btn text-white fw-bold" style="background-color: #29335C;">{{ btn_text }}</a>
+    {% else %}
+        <button type="submit" class="btn text-white fw-bold" style="background-color: #29335C">{{ btn_text }}</button>
+    {% endif %}
+
+<!--Para botões e links vermelho-->
+{% elif button_type == "red" %}
+    {% if href %}
+        <a href="{{ href }}" class="btn text-white fw-bold" style="background-color: #92140C">{{ btn_text }}</a>
+    {% else %}
+        <button type="submit" class="btn text-white fw-bold" style="background-color: #92140C">{{btn_text}}</button>
+    {% endif %}
+
+<!--Para botões e links cinzas-->
+{% elif button_type == "gray" %}
+    {% if href %}
+        <a href="{{ href }}" class="btn btn-secondary text-white fw-bold">{{ btn_text }}</a>
+    {% else %}
+        <button type="submit" class="btn btn-secondary text-white fw-bold">{{btn_text}}</button>
+    {% endif %}
+
+<!--Para botões e links amarelos-->
+{% elif button_type == "yellow" %}
+    {% if href %}
+        <a href="{{ href }}" class="btn fw-bold" style="background-color: #FFC800;">{{ btn_text }}</a>
+    {% else %}
+        <button type="submit" class="btn fw-bold" style="background-color: #FFC800">{{btn_text}}</button>
+    {% endif %}
+
+<!--Para botões e links brancos-->
+{% elif button_type == "white" %}
+    {% if href %}
+        <a href="{{ href }}" class="btn btn-light fw-bold">{{ btn_text }}</a>
+    {% else %}
+        <button type="submit" class="btn btn-light fw-bold">{{ btn_text }}</button>
+    {% endif %}
+
+<!--Para botões e links laranjas-->
+{% elif button_type == "black" %}
+    {% if href %}
+        <a href="{{ href }}" class="btn btn-dark fw-bold">{{ btn_text }}</a>
+    {% else %}
+        <button type="submit" class="btn btn-dark fw-bold">{{ btn_text }}</button>
+    {% endif %}
+
+<!--Para botões e links pretos-->
+{% elif button_type == "black" %}
+    {% if href %}
+        <a href="{{ href }}" class="btn btn-dark">{{ btn_text }}</a>
+    {% else %}
+        <button type="submit" class="btn btn-dark">{{ btn_text }}</button>
+    {% endif %}
+{% endif %}
