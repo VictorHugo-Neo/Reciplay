@@ -6,10 +6,9 @@ from quiz.models import UserRank, Quiz, QuizSubmission, Question
 from django.contrib.auth.decorators import login_required, user_passes_test
 import datetime
 from .models import Message, Blog
-from django.db.models import Count, Q
+from django.db.models import Count, Q, F, Value
 import math
-from django.db.models.functions import ExtractYear
-
+from django.db.models.functions import ExtractYear, Coalesce
 # Create your views here.
 def home(request):
 
@@ -28,15 +27,15 @@ def home(request):
 
 @login_required(login_url="login")
 def leaderboard_view(request):
-
+    # Obtém o objeto do usuário e o perfil do usuário
     user_object = User.objects.get(username=request.user)
     user_profile = Profile.objects.get(user=user_object)
 
-    leaderboard_users = UserRank.objects.order_by('rank')
+    # Filtra os usuários com pontuação válida (total_score > 0) e ordena pelo ranking
+    leaderboard_users = UserRank.objects.filter(total_score__gt=0).order_by('rank')
 
     context = {"leaderboard_users": leaderboard_users, "user_profile": user_profile}
     return render(request, "leaderboard.html", context)
-
 
 def is_superuser(user):
     return user.is_superuser
@@ -146,7 +145,7 @@ def contact_view(request):
         if subject is not None and message is not None:
             form = Message.objects.create(user=request.user, subject=subject, message=message)
             form.save()
-            messages.success(request, "We got your message. We will resolve your query soon.")
+            messages.success(request, "Nós recebemos sua mensagem. Resolveremos sua dúvida em breve.")
             return redirect('profile', request.user.username)
         
         else:

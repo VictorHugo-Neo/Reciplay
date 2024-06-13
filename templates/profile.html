@@ -1,10 +1,10 @@
 {% extends 'index.html' %}
 
-{% block title %}@{{user_profile2.user.username}}'s Profile - BrainBunny{% endblock title %}
+{% block title %}@{{user_profile2.user.username}}-RecyPlay{% endblock title %}
 
 {% block content %}
 
-    <h1 class="display-4 text-center my-5">@{{user_profile2.user.username}}'s Profile</h1>
+    <h1 class="display-4 text-center my-5 fw-bold" style="color: #00BF13">{{user_profile2.user.first_name}}</h1>
     <div class="mb-3">
         {% for message in messages %}
         <h5 class="text-{{message.level_tag}} text-center">{{message}}</h5>
@@ -13,8 +13,13 @@
     <div class="container text-center">
         {% if request.user.username == user_profile2.user.username %}
         <div class="btn-group" role="group" aria-label="Basic mixed styles example">
-            <a href="{% url 'edit_profile' %}" type="button" class="btn btn-outline-primary">Editar</a>
-            <a href="{% url 'delete_profile' %}" type="button" class="btn btn-outline-danger">Deletar</a>
+            
+            {% url 'edit_profile' as edit_url %}
+            {% include 'includes/butt-href.html' with button_type="green" href=edit_url btn_text="EDITAR" %}
+            
+            {% url 'delete_profile' as delete_url %}
+            {% include 'includes/butt-href.html' with button_type="red" href=delete_url btn_text="DELETAR" %}
+
         </div>
         {% endif %}
 
@@ -22,7 +27,7 @@
             <div class="row row-cols-sm-1 row-cols-md-2">
                 <div class="col-12">
                     <img src="{{user_profile2.profile_img.url}}" alt="user-profile" class="rounded-circle" width="150" height="150">
-                    <h2 class="fs-3">@{{user_profile2.user.username}}</h2>
+                    <h2 class="fs-3 fw-bold"style="color: #FF6B35">@{{user_profile2.user.username}}</h2>
                 </div>
                 <div class="col-12">
                     <h2>{{user_profile2.user.first_name|default:"Nome completo não disponível"}} {{user_profile2.user.last_name}}</h2>
@@ -30,7 +35,7 @@
                     <p class="fs-5"><i class="bi bi-geo-alt-fill"></i> {{user_profile2.location|default:'Localização não disponível'}}</p>
                     <p class="fs-5"><i class="bi bi-file-person"></i> {{user_profile2.bio|default:'Biografia não disponível'}}</p>
                     {% if request.user.is_superuser %}
-                    <p class="fs-5"><i class="bi bi-envelope-at"></i> <a href="mailto:{{user_profile2.user.email}}"> {{user_profile2.user.email|default:'Email Not Available'}}</a></p>
+                    <p class="fs-5"><i class="bi bi-envelope-at"></i> <a href="mailto:{{user_profile2.user.email}}"> {{user_profile2.user.email|default:'E-mail não disponível'}}</a></p>
                     {% endif %}
                 </div>
             </div>
@@ -41,7 +46,7 @@
         <div class="container">
             <div class="row row-cols-sm-1 row-cols-md-1 row-cols-lg-1">
                 <div class="col-12">
-                    <h3>Quiz attended by @{{user_profile2.user.username}}</h3>
+                    <h3>Quizzes respondidos</h3>
                     <table class="table">
                         <thead>
                             <tr>
@@ -57,7 +62,7 @@
                                 <th scope="row">{{forloop.counter}}</th>
                                 <td title="{{submission.quiz.title}}">{{submission.quiz.title|truncatewords:6}}</td>
                                 <td>{{submission.score}}/{{submission.quiz.question_set.all|length}}</td>
-                                <td>{{submission.submitted_at|timesince}} ago</td>
+                                <td>{{submission.submitted_at|timesince}} atrás</td>
                             </tr>
                             {% endfor %}
                         </tbody>

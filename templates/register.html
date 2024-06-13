@@ -4,7 +4,7 @@
 
 {% block content %}
 
-  <h1 class="display-4 text-center my-5">Cadastro</h1>
+  <h1 class="display-4 text-center my-5 fw-bold" style="color: #00BF13">Cadastro</h1>
 
   <div class="container">
     <div class="row row-cols-sm-1 row-cols-lg-3 container">
@@ -41,8 +41,8 @@
             <input type="checkbox" class="form-check-input" id="exampleCheck1" required>
             <label class="form-check-label" for="exampleCheck1"><a href="{% url 'terms_conditions' %}">Termo e condições</a></label>
           </div>
-          <button type="submit" class="btn btn-primary">Finalizar cadastro</button>
-          <p class="my-4">Já possui uma conta? <b><a href="{% url 'login' %}">Login</a></b></p>
+          {% include 'includes/butt-href.html' with button_type="green" btn_text="Finalizar cadastro" %}
+          <p class="my-4" >Já possui uma conta? <b><a style="color: #00BF13" href="{% url 'login' %}">Login</a></b></p>
         </form>
       </div>
       <div class="col-12">

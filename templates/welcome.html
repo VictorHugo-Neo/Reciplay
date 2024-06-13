@@ -4,17 +4,12 @@
 {% block content %}
 
 <div class="container text-center my-5">
-    <h1 class="display-5 fw-bold my-2">Bem vindo ao RecyPlay</h1>
+    <h1 class="display-5 fw-bold my-2" style="color: #00BF13">Bem vindo ao RecyPlay</h1>
     <p class="fs-3">Aprenda jogando</p>
     <div class="d-inline-flex gap-2 mb-5">
-        <a href="{% url 'all_quiz' %}" class="d-inline-flex align-items-center btn btn-primary btn-lg px-4">
+        <a href="{% url 'all_quiz' %}" class="d-inline-flex align-items-center btn fw-bold btn-lg px-4" style="background-color: #00BF13">
             Inciar um Quiz
         </a>
-        {% if not request.user.is_authenticated %}
-        <a href="{% url 'register' %}" class="btn btn-outline-secondary btn-lg px-4" type="button">
-            Login
-        </a>
-        {% endif %}
     </div>
 </div>
 
@@ -27,15 +22,19 @@
             <h4 class="text-center text-danger">Nenhum usuário disponível na tabela de classificação!!</h4>
         </div>
         {% else %}
-        {% for rank in leaderboard_users %}
-        <div class="col-lg-4 position-relative mb-4">
-            <img src="{{rank.user.profile.profile_img.url}}" class="img-fluid" width="150" height="150" alt="user-profile">
-            <span class="position-absolute top-0 start-90 translate-middle badge rounded-pill bg-success">{{forloop.counter}}</span>
-            <h2 class="fw-normal">@{{rank.user.username}}</h2>
-            <p>{{rank.user.profile.bio|truncatewords:5}}</p>
-            <p><a class="btn btn-secondary" href="{% url 'profile' rank.user.username  %}">Visualizar Perfil</a></p>
-        </div>
-        {% endfor %}
+            {% for rank in leaderboard_users %}
+                <div class="col-lg-4 position-relative mb-4">
+                    <img src="{{rank.user.profile.profile_img.url}}" class=" rounded-circle" width="150" height="150" alt="user-profile">
+                    <span class="position-absolute top-0 start-90 translate-middle badge rounded-pill"style= "background-color: #29335C;" >{{forloop.counter}}° Lugar</span>
+                    {% if rank.user.first_name %}
+                        <h2 class="fs-5">{{ rank.user.first_name }}</h2>
+                    {% else %}
+                        <h2 class="fs-5">@{{ rank.user.username }}</h2>
+                    {% endif %}
+                    <p>{{rank.user.profile.bio|truncatewords:5}}</p>
+                    <p><a class="btn btn-secondary fw-bold" style="background-color: #29335C" href="{% url 'profile' rank.user.username  %}">Visualizar Perfil</a></p>
+                </div>
+            {% endfor %}
         {% endif %}
     </div>
 

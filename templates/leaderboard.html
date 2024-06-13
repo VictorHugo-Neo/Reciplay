@@ -4,7 +4,7 @@
 
 {% block content %}
 <div class="container text-center">
-    <h1 class="display-4 text-center my-5">Entre os melhores</h1>
+    <h1 class="display-4 text-center my-5 fw-bold " style="color: #00BF13">Entre os melhores</h1>
 
     <div class="row row-cols-sm-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4 mx-3">
         {% if leaderboard_users|length == 0 %}
@@ -12,15 +12,19 @@
             <h4 class="text-center text-danger">Nenhum usuário disponível na tabela de classificação!!</h4>
         </div>
         {% else %}
-        {% for rank in leaderboard_users %}
-        <div class="col-lg-4 position-relative mb-4">
-            <img src="{{rank.user.profile.profile_img.url}}" class="img-fluid" width="150" height="150" alt="user-profile">
-            <span class="position-absolute top-0 start-90 translate-middle badge rounded-pill bg-success">{{forloop.counter}}</span>
-            <h2 class="fw-normal">@{{rank.user.username}}</h2>
-            <p>{{rank.user.profile.bio|truncatewords:5}}</p>
-            <p><a class="btn btn-secondary" href="{% url 'profile' rank.user.username  %}">Visualizar perfil »</a></p>
-        </div>
-        {% endfor %}
+            {% for rank in leaderboard_users %}
+                <div class="col-lg-4 position-relative mb-4">
+                    <img src="{{rank.user.profile.profile_img.url}}" class="rounded-circle" width="150" height="150" alt="user-profile">
+                    <span class="position-absolute top-0 start-90 translate-middle badge rounded-pill" style= "background-color: #29335C;">{{forloop.counter}}° Lugar</span>
+                    {% if rank.user.first_name %}
+                        <h2 class="fs-5">{{ rank.user.first_name }}</h2>
+                    {% else %}
+                        <h2 class="fs-5">@{{ rank.user.username }}</h2>
+                    {% endif %}
+                    <p>{{rank.user.profile.bio|truncatewords:5}}</p>
+                    <p><a class="btn btn-secondary " style= "background-color: #29335C" href="{% url 'profile' rank.user.username  %}">Visualizar perfil »</a></p>
+                </div>
+            {% endfor %}
         {% endif %}
     </div>
 </div>

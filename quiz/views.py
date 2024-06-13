@@ -63,7 +63,7 @@ def quiz_view(request, quiz_id):
 
         # Check if the user has already submiited the quiz
         if QuizSubmission.objects.filter(user=request.user, quiz=quiz).exists():
-            messages.success(request, f"This time you got {score} out of {total_questions}")
+            messages.success(request, f"Você acertou {score} de {total_questions} questões ")
             return redirect('quiz', quiz_id)
         
         # save the new quiz submission
@@ -71,7 +71,7 @@ def quiz_view(request, quiz_id):
         submission.save()
 
         # show the result in message
-        messages.success(request,f"Quiz Submitted Successfully. You got {score} out of {total_questions}")
+        messages.success(request,f"Questionário enviado com sucesso. Você tem {score} de {total_questions}")
         return redirect('quiz', quiz_id)
 
     if quiz != None:

@@ -3,25 +3,27 @@
 
 {% block content %}
 
-<h1 class="display-4 text-center my-5">Blogs</h1>
+<h1 class="display-4 text-center my-5 fw-bold"  style="color: #00BF13">Blogs</h1>
 
 <main>
     <div class="container col-md-6 col-sm-12">
+
         {% for year_count in year_blog_count %}
-        <h3>{{year_count.year}} - ({{year_count.count}} blogs)</h3>
-        <ul class="list mb-4 p-3">
             {% for blog in blogs %}
-            {% if blog.created_at|date:"Y" == year_count.year|stringformat:"s" %}
-            <li class="d-flex justify-content-between mb-2">
-                <a href="{% url 'blog' blog.id %}">{{blog.title}}</a>
-                <span class="text-secondary">{{blog.created_at}}</span>
-            </li>
-            {% endif %}
+                {% if blog.created_at|date:"Y" == year_count.year|stringformat:"s" %}
+                    <div class="list-group" >
+                        <a href="{% url 'blog' blog.id %}" class="list-group-item list-group-item-action " style="color: #FF6B35;" aria-current="true">
+                        <div class="d-flex w-100 justify-content-between">
+                            <h5 class="mb-1">{{blog.title}}</h5>
+                        </div>
+                        <p class="mb-2 " style="color: #29335C;">Criado em {{blog.created_at}}</p>
+                        </a>
+                    </div>
+                {% endif %}
             {% endfor %}
-        </ul>
         {% endfor %}
-        
     </div>
+    
 </main>
 
 {% endblock content %}

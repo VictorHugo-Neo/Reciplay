@@ -1,9 +1,9 @@
 <!--Para botões e link verde-->
 {% if button_type == "green" %}
     {% if href %}
-        <a href="{{ href }}" class="btn fw-bold" style="background-color: #00BF13">{{ btn_text }}</a>
+        <a href="{{ href }}" class="btn fw-bold " style="background-color: #00BF13">{{ btn_text }}</a>
     {% else %}
-        <button type="submit" class="btn" style="background-color: #00BF13">{{btn_text}}</button>
+        <button type="submit" class="btn fw-bold" style="background-color: #00BF13">{{btn_text}}</button>
     {% endif %}
 
 <!-- Para botões e link azul -->
@@ -35,7 +35,7 @@
     {% if href %}
         <a href="{{ href }}" class="btn fw-bold" style="background-color: #FFC800;">{{ btn_text }}</a>
     {% else %}
-        <button type="submit" class="btn fw-bold" style="background-color: #FFC800">{{btn_text}}</button>
+        <button type="submit" class="btn fw-bold {{classes}}" style="background-color: #FFC800">{{btn_text}}</button>
     {% endif %}
 
 <!--Para botões e links brancos-->
@@ -47,11 +47,11 @@
     {% endif %}
 
 <!--Para botões e links laranjas-->
-{% elif button_type == "black" %}
+{% elif button_type == "orange" %}
     {% if href %}
-        <a href="{{ href }}" class="btn btn-dark fw-bold">{{ btn_text }}</a>
+        <a href="{{ href }}" class="btn fw-bold" style="background-color: #FF6B35">{{ btn_text }}</a>
     {% else %}
-        <button type="submit" class="btn btn-dark fw-bold">{{ btn_text }}</button>
+        <button type="submit" class="btn fw-bold" style="background-color: #FF6B35">{{btn_text}}</button>
     {% endif %}
 
 <!--Para botões e links pretos-->

@@ -20,19 +20,20 @@
                     {% csrf_token %}
                     <div class="mb-3">
                         <label for="exampleInputEmail1" class="form-label visually-hidden">Nome de usuário</label>
-                        <input type="text" name="username" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Username" required>
+                        <input type="text" name="username" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Digite seu username" required>
                     </div>
                     <div class="mb-3">
                         <label for="exampleInputPassword1" class="form-label visually-hidden">Senha</label>
-                        <input type="password" name="password" class="form-control" id="exampleInputPassword1" placeholder="Password" required>
+                        <input type="password" name="password" class="form-control" id="exampleInputPassword1" placeholder="Digite sua senha" required>
                     </div>
                     <div class="mb-3 form-check">
                         <input type="checkbox" class="form-check-input" id="exampleCheck1">
                         <label class="form-check-label" for="exampleCheck1">Me lembrar da senha</label>
                     </div>
-                    <button type="submit" class="btn btn-success px-5 fw-bold">Login</button>
+                    
+                    {% include 'includes/butt-href.html' with button_type="green" btn_text="Login" %}
                 </form>
-                <p class="my-4">Ainda não tem uma conta? <b><a href="{% url 'register' %}" class="text-success">Registrar-se</a></b></p>
+                <p class="my-4">Ainda não tem uma conta? <b><a href="{% url 'register' %}" style="color: #00BF13">Registrar-se</a></b></p>
             </div>
             <div class="col-12">
             </div>

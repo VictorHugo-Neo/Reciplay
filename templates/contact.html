@@ -3,7 +3,7 @@
 
 {% block content %}
 
-<h1 class="display-4 text-center my-5">Contate-nos</h1>
+<h1 class="display-4 text-center my-5 fw-bold" style="color: #00BF13">Contate-nos</h1>
 
 <main>
 	<div class="container">
@@ -25,8 +25,7 @@
 						<label for="message">Messagem</label>
 						<textarea id="message" name="message" rows="5" required class="form-control"></textarea>
 					</div>
-
-					<button type="submit" class="btn btn-primary btn-block">Enviar Menssagem</button>
+					{% include 'includes/butt-href.html' with button_type="green"  btn_text="Enviar Menssagem"%}
 				</form>
 			</div>
 		</div>

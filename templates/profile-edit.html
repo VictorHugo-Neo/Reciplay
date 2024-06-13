@@ -67,7 +67,7 @@
             <textarea class="form-control" name="bio" id="exampleFormControlTextarea1" rows="3" placeholder="Sua biografia" required>{{user_profile.bio}}</textarea>
           </div>
           
-          <button type="submit" class="btn btn-success">Salvar perfil</button>
+          {% include 'includes/butt-href.html' with button_type="green" btn_text="Salvar perfil" %}
         </form>
       </div>
       <div class="col-12">

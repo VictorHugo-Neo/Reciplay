@@ -6,10 +6,6 @@ from .models import Profile
 from quiz.models import QuizSubmission
 
 
-# Create your views here.
-
-
-
 def register(request):
     if request.user.is_authenticated:
         return redirect('profile', request.user.username)
@@ -24,12 +20,12 @@ def register(request):
         if password == password2:
             # check if email is not same
             if User.objects.filter(email=email).exists():
-                messages.info(request, "Email Already Used. Try to Login.")
+                messages.info(request, "E-mail já cadastrado")
                 return redirect('register')
             
             # check if username is not same
             elif User.objects.filter(username=username).exists():
-                messages.info(request, "Username Already Taken.")
+                messages.info(request, "Username já em uso")
                 return redirect('register')
             
             else:
@@ -48,7 +44,7 @@ def register(request):
                 new_profile.save()
                 return redirect('profile', username)
         else:
-            messages.info(request, "Password Not Matching.")
+            messages.info(request, "A senha não corresponde")
             return redirect('register')
 
     context = {}
@@ -91,7 +87,7 @@ def editProfile(request):
                 user_object.save()
             else:
                 if u != user_object:
-                    messages.info(request, "Email Already Used, Choose a different one!")
+                    messages.info(request, "E-mail já utilizado, escolha outro!")
                     return redirect('edit_profile')
 
         # Username
@@ -103,7 +99,7 @@ def editProfile(request):
                 user_object.save()
             else:
                 if u != user_object:
-                    messages.info(request, "Username Already Taken, Choose an unique one!")
+                    messages.info(request, "Username já em uso, escolha um único!")
                     return redirect('edit_profile')
 
         # firstname lastname
@@ -155,7 +151,7 @@ def login(request):
             auth.login(request, user)
             return redirect('profile', username)
         else:
-            messages.info(request, 'Credentials Invalid!')
+            messages.info(request, 'Username ou senha incorreto!')
             return redirect('login')
 
     return render(request, "login.html")
