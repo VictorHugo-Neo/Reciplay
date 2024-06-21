@@ -1,0 +1,4 @@
+Dúvidas:
+Qual a interface do ADMIN?
+Quem fará o cadastro das questões?
+Que tal utilizar IA para gerar o conteúdo automaticamente?
