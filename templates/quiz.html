@@ -4,8 +4,8 @@
 
 {% block content %}
 
-    <h1 class="display-4 text-center my-5">{{quiz.title}} - ({{quiz.question_set.all|length}})</h1>
-    <p class="fs-4 text-center container">{{quiz.description}}</p>
+<h1 class="display-4 text-center my-5">{{quiz.title}} - ({{quiz.question_set.all|length}})</h1>
+<p class="fs-4 text-center container">{{quiz.description}}</p>
 
 <div class="container">
     <div class="d-flex justify-content-between">
@@ -62,8 +62,10 @@
     var questions = document.querySelectorAll(".question");
     var userScoreInput = document.getElementById("user-score");
 
-    quizDuration = (questions.length) * 60; // convert in seconds
-    
+    var quizTimerId; // Declare quizTimerId globally to handle clearInterval
+
+    var quizDuration = (questions.length) * 60; // Convert questions.length to seconds
+
     // Update Timer
     function updateTimer() {
         var minutes = Math.floor(quizDuration / 60);
@@ -74,11 +76,12 @@
         // Check if the time ended
         if (quizDuration <= 0) {
             // Automatically Submit the quiz
-            clearTimeout(quizTimerId);
+            clearInterval(quizTimerId); // Use clearInterval instead of clearTimeout
             submitQuiz();
         } else if (document.getElementById("message-div")) {
             clearTimeout(quizTimerId);
             highlightCorrectAnswers();
+            displayStoredAnswers();
         } else {
             // decrement the timer value by 1s
             quizDuration--;
@@ -89,6 +92,9 @@
     function submitQuiz() {
         // Calculate the score
         calculateScore();
+
+        // Highlight correct answers and store in local storage
+        highlightAndStoreAnswers();
 
         // Submit the quiz
         quizForm.submit();
@@ -113,18 +119,30 @@
         userScoreInput.value = score;
     }
 
-    // highlight correct answer while showing result
-    function highlightCorrectAnswers() {
+    // Function to highlight correct answers and store in local storage
+    function highlightAndStoreAnswers() {
+        // Store answers array in local storage
+        var answers = [];
+
+        // Loop through each question
         questions.forEach(question => {
-            var correctAnswer = question.querySelector(".correct-answer");
-            correctAnswer.previousElementSibling.querySelector("input").classList.add("bg-success");
-            correctAnswer.previousElementSibling.classList.add("fw-bold");
+            var correctAnswer = question.querySelector(".correct-answer").innerText;
+            var selectedInput = question.querySelector('input:checked');
+
+            // Store the answers in local storage without highlighting
+            answers.push({
+                question: question.querySelector(".card-header").innerText.trim(),
+                correctAnswer: correctAnswer,
+                userAnswer: selectedInput ? selectedInput.value : "Não respondida"
+            });
         });
+
+        localStorage.setItem("quizAnswers", JSON.stringify(answers));
 
         // disable submit button
         submitButton.disabled = true;
 
-        // disabel all options
+        // disable all options
         var options = document.querySelectorAll(".form-check-input");
         options.forEach(option => {
             option.disabled = true;
@@ -132,11 +150,59 @@
     }
 
     // Attach Event Listener to Submit button
-    submitButton.addEventListener("click", submitQuiz);
+    submitButton.addEventListener("click", function(event) {
+        event.preventDefault(); // Prevent default form submission
+
+        // Call submitQuiz function
+        submitQuiz();
+    });
 
     // Timer Interval
     quizTimerId = setInterval(updateTimer, 1000);
+
+    // Function to display stored answers (can be called on results page)
+    function displayStoredAnswers() {
+        var storedAnswers = localStorage.getItem("quizAnswers");
+
+        if (storedAnswers) {
+            var answers = JSON.parse(storedAnswers);
+
+            answers.forEach(answer => {
+                questions.forEach(question => {
+                    var questionHeader = question.querySelector(".card-header").innerText.trim();
+
+                    if (questionHeader === answer.question) {
+                        var correctAnswer = question.querySelector(".correct-answer").innerText;
+                        var userAnswerElement = question.querySelector(`input[value="${answer.userAnswer}"]`);
+
+                        // Highlight correct answer
+                        question.querySelector(`input[value="${correctAnswer}"]`).classList.add("bg-success");
+                        question.querySelector(`input[value="${correctAnswer}"]`).parentElement.classList.add("fw-bold");
+
+                        // Highlight user's answer (if not correct)
+                        if (userAnswerElement && answer.userAnswer !== correctAnswer) {
+                            userAnswerElement.classList.add("bg-danger");
+                            userAnswerElement.parentElement.classList.add("fw-bold");
+                        }
+                    }
+                });
+            });
+            submitButton.disabled = true;
+            
+            var options = document.querySelectorAll(".form-check-input");
+            options.forEach(option => {
+                option.disabled = true;
+            });
+            // Clear local storage after displaying answers
+            localStorage.removeItem("quizAnswers");
+        }
+    }
+
+    // Call displayStoredAnswers on page load or on results page
+    // Replace this with the appropriate page where you want to display answers
+    displayStoredAnswers();
 </script>
+
 
 
 {% endblock content %}
