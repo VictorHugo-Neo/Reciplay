@@ -17,7 +17,7 @@
           {% endfor %}
         </div>
 
-        <form method="POST" action="">
+        <form id="registrationForm" method="POST" action="">
           {% csrf_token %}
           <div class="mb-3">
             <label for="exampleInputEmail2" class="form-label visually-hidden">Email</label>
@@ -38,16 +38,30 @@
             <input type="password" name="password2" class="form-control" id="exampleInputPassword2" placeholder="Repita a senha" required>
           </div>
           <div class="mb-3 form-check">
-            <input type="checkbox" class="form-check-input" id="exampleCheck1" required>
-            <label class="form-check-label" for="exampleCheck1"><a href="{% url 'terms_conditions' %}">Termo e condições</a></label>
+            <input type="checkbox" class="form-check-input" id="exampleCheck1">
+            <label class="form-check-label fw-bold" style="color: #29335C" for="exampleCheck1">Li e concordo com os <a  class="fw-bold" style="color: #FF6B35" href="{% url 'terms_conditions' %}"> termos e condições</a></label>
+            <div id="termsError" class="text-danger fw-bold" style="display:none;">Por favor, leia e aceite os Termos e Condições.</div>
           </div>
           {% include 'includes/butt-href.html' with button_type="green" btn_text="Finalizar cadastro" %}
-          <p class="my-4" >Já possui uma conta? <b><a style="color: #00BF13" href="{% url 'login' %}">Login</a></b></p>
+          <p class="my-4">Já possui uma conta? <b><a style="color: #00BF13" href="{% url 'login' %}">Login</a></b></p>
         </form>
       </div>
       <div class="col-12">
       </div>
     </div>
   </div>
+
+  <script>
+    document.getElementById('registrationForm').addEventListener('submit', function(event) {
+      const termsCheck = document.getElementById('exampleCheck1');
+      const termsError = document.getElementById('termsError');
+      if (!termsCheck.checked) {
+        event.preventDefault();
+        termsError.style.display = 'block';
+      } else {
+        termsError.style.display = 'none';
+      }
+    });
+  </script>
 
 {% endblock content %}
