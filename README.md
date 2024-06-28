@@ -1,9 +1,9 @@
 
 <h1 align="center">
   <br>
-  <a href="http://www.amitmerchant.com/electron-markdownify"><img src="https://raw.githubusercontent.com/amitmerchant1990/electron-markdownify/master/app/img/markdownify.png" alt="Markdownify" width="200"></a>
+  <a href="http://www.amitmerchant.com/electron-markdownify"><img src="https://w7.pngwing.com/pngs/924/175/png-transparent-paper-recycling-recycling-symbol-emoji-recycle-angle-text-recycling-thumbnail.png" alt="Markdownify" width="200"></a>
   <br>
-  Markdownify
+  Recyplay
   <br>
 </h1>
 
