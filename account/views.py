@@ -68,7 +68,6 @@ def profile(request, username):
 
 @login_required(login_url='login')
 def editProfile(request):
-
     user_object = User.objects.get(username=request.user)
     user_profile = Profile.objects.get(user=user_object)
 
@@ -115,10 +114,8 @@ def editProfile(request):
 
         return redirect('profile', user_object.username)
 
-
     context = {"user_profile": user_profile}
     return render(request, 'profile-edit.html', context)
-
 
 @login_required(login_url='login')
 def deleteProfile(request):

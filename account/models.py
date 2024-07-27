@@ -10,11 +10,11 @@ class Profile(models.Model):
     profile_img = models.ImageField(upload_to='profile_images', default='user.png', blank=True, null=True, verbose_name='Profile Pic')
     location = models.CharField(max_length=100, blank=True, null=True)
     GENDER = (
-        ('Male', 'Male'),
-        ('Female', 'Female'),
-        ('Other', 'Other'),
+        ('Masculino', 'Masculino'),
+        ('Feminino', 'Feminino'),
+        ('Outro', 'Outro'),
     )
-    gender = models.CharField(max_length=6, choices=GENDER, blank=True, null=True)
+    gender = models.CharField(max_length=9, choices=GENDER, blank=True, null=True)
 
     def __str__(self):
         return self.user.username
