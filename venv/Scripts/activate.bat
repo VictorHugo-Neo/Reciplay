@@ -8,7 +8,11 @@ if defined _OLD_CODEPAGE (
     "%SystemRoot%\System32\chcp.com" 65001 > nul
 )
 
+<<<<<<< HEAD
 set VIRTUAL_ENV=C:\Users\vhlca\OneDrive\Área de Trabalho\Nova pasta\TCC\Reciplay\venv
+=======
+set VIRTUAL_ENV=C:\Users\vhlca\Reciplay\venv
+>>>>>>> 1e6d5b98abb04a03c9ac2a3931d936fd65a61e6a
 
 if not defined PROMPT set PROMPT=$P$G
 
